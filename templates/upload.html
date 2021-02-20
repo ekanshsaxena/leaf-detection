@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+    body{
+        font-family: 'Open Sans', sans-serif;
+       background: url('../static/img/bg1.jpg') no-repeat;
+       opacity: 0.8;
+       
+       min-height: 600px;
+       /* position: relative; */
+       z-index: -1;
+    }
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type="file"] + label {
+  height:50px;
+  width:200px;
+  background: darkgreen;
+  opacity: 1;
+  z-index: inherit;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0;
+  outline: none;
+  padding: 10px 20px 10px 30px;
+  position: relative;
+  transition: none;
+  vertical-align: middle;
+  box-shadow: 0 6px lightgrey;
+  }
+  label:hover {
+    box-shadow:0 4px darken(lightgrey,50%);
+    top:2px;
+  }
+
+  [type="submit"]{
+    height:40px;
+    width:100px;
+    background-color: darkgreen;
+    border: 1px solid lightgreen;
+    font-weight:bold;
+    margin-left: 40px;
+    cursor: pointer;
+    color:white;
+  }
+  #upload-button:hover{
+    background-color: rgb(7, 151, 7);
+  }
+#header{
+    background-color: black;
+    width: 100%;
+    height:80px;
+    padding-left: 60px;
+}
+#header > a{
+    margin-top: -80px;
+margin-left: 90%;
+}
+
+.set-width{
+    margin-top: 25% ;
+    margin-left: 24%;
+}
+#upload-form{
+    margin-left: 14%;
+    margin-top: 3%;
+}
+</style>
+</head>
+<body>
+
+<!-- navigation -->
+
+    
+<div class="container" >
+<div class="row">
+    <div class="col-8 set-width">
+    <h2 style="color: rgb(255, 255, 255,1)">&#8618; Upload <strong style="    color: rgb(5, 71, 10,1); text-decoration:underline ;">Leaf</strong> Image</h2>
+<!-- </div>
+</div>
+<div class="row">
+  <div class="col-2 col-sm-2 offset-1 offset-sm-1"> -->
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+    <input id="file-picker" class="d-flex justify-content-center" type="file" name="file" accept="image/*" multiple>
+    <label for="file-picker" >Choose a file</label>
+    <br>
+    <p>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button"></p>
+</form>
+</div>
+</div>
+
+
+
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png') || (ext == 'jpeg'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+
+</script>
+</html>
