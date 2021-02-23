@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Covid-Report</title>
+    <title>Plant Identification Using Leaf Image</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
     	#hero{
@@ -29,27 +29,24 @@
     </style>
 </head>
 <body>
-	<div class="container-fluid" id="header">
-    <img src="/static/img/covi3.png" width=120px height=70px>
-    <a role="button" class="btn btn-success" href="http://covidplus.live"><strong>Go Back</strong>
-    </a>
-	</div>
 
 	<div class="container-fluid" id="hero">
-		<div class="container" style="margin-left: 3rem;">
-<h1 style="padding-top: 2rem;">Here is your report<strong>!</strong></h1>
+    <center>
+		<div class="container" style="margin: 3rem;">
+<h1 style="padding-top: 2rem;">Here is your result !<strong>!</strong></h1>
 <br>
 <br>
 <p>
 <img src=" {{url_for('send_image', filename=image_name, result_pred = result_pred)}}" height=20% width=20%>
 </p>
 <br>
-<h2 style="font-size: 30px;"><strong>You are</strong></h2>
-<h1 style="color: red;"> {{ result_pred }} <strong style="color: black;">Here, is your Result.</strong></h1>
-<!-- <h1 style="color: green;"> {{ pred_normal }} <strong style="color: black;">Normal</strong></h1> -->
+<h1 style="font-size: 30px;">It is a <strong style="color: red;">{{ result_pred }} </strong> Leaf.</h2>
+<!-- <h1 style="color: red;"> {{ result_pred }}</h1>
+ -->
 <br>
 <a role="button" class="btn btn-success" href="{{ url_for('back') }}">Go back</a>
 		</div>
+  </center>
 	</div>
 </body>
 </html>
