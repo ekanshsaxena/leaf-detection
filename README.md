@@ -7,19 +7,15 @@ learning.
 for testing the model.
 2. Libraries like resnet50, sequential, globalaveragepooling2d, are imported
 3. Complete data is divided into 3 classes ("apple", "blueberry", "tomato").
-4. We have used pooling as average and activation function as softmax.
-5. We have excluded top layer during the training.
-6. We have used standard image size that is 224.
+4. Set pooling as "average" and activation function as "softmax".
+5. Excluded top layer for the training.
+6. Set image size as "224" during the pre-processing of the image.
 
 ##FOR TRAINING
-7. We have all total images of 1200 x 3(number of classes) = 3600 images and that’s why we
-take batch_size as 12.
-epoch=3600/12 =300
+7. There are total 1200 x 3(number of classes) = 3600 images for training and batch_size is set at 12: Epoch=3600/12 = 300
 
 ##FOR TESTING
-8. We have all total images of 300 x 3(number of classes) = 900 images and that’s why we
-take batch_size as 3.
-epoch=900/3 =300
+8. There are total 300 x 3(number of classes) = 900 images for testing and batch_size is set at 3: Epoch=900/3 =300
 
 9. We get prediction by following the piece of code :
  		model.predict(test_data)
